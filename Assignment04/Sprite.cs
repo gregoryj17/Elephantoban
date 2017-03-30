@@ -100,6 +100,12 @@ namespace Assignment04
             s.parent = this;
             children.Add(s);
         }
+
+        public void RemoveAll()
+        {
+            children = new List<Sprite>();
+        }
+
     }
 
     public class SlideSprite : Sprite

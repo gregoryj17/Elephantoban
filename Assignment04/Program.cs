@@ -14,6 +14,7 @@ namespace Assignment04
         public static int y;
         public static int width;
         public static int height;
+        public static String map;
 
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -37,6 +38,21 @@ namespace Assignment04
             {
                 if (canMoveTo(x, y + 1, 0, 1)) y++;
                 if (blocks[x, y] != null) moveBlock(x, y, 0, 1);
+            }
+            if (e.KeyCode == Keys.R) {
+                Reset();
+            }
+            if (e.KeyCode == Keys.N)
+            {
+                NewMap();
+            }
+            if (e.KeyCode == Keys.P)
+            {
+                jukebox.PlayLooping();
+            }
+            if (e.KeyCode == Keys.M)
+            {
+                jukebox.Stop();
             }
             elephant.TargetX = x * 100;
             elephant.TargetY = y * 100;
@@ -80,20 +96,27 @@ namespace Assignment04
         private void fixScale()
         {
             canvas.Scale = Math.Min(ClientSize.Width, ClientSize.Height) / (Math.Max(height,width)*200.0f);
-            //more code here
+            canvas.X = (ClientSize.Width - (200 * width * canvas.Scale)) / 2;
+            canvas.Y = (ClientSize.Height - (200 * height * canvas.Scale)) / 2;
         }
 
-
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        protected Boolean isFinished()
         {
-            String map = Properties.Resources.level1;
+            for(int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    if (goals[i, j] != null ^ blocks[i, j] != null) return false;
+                }
+            }
+            return true;
+        }
+
+        protected static void Setup()
+        {
             String[] lines = map.Split('\n');
-            width = 8;
-            height = 9;
+            width = lines[0].Length-1;
+            height = lines.Length;
             goals = new SlideSprite[width, height];
             walls = new SlideSprite[width, height];
             blocks = new SlideSprite[width, height];
@@ -133,6 +156,34 @@ namespace Assignment04
                 for (int i = 0; i < width; i++)
                     if (blocks[i, j] != null) Program.canvas.add(blocks[i, j]);
             Program.canvas.add(elephant);
+        }
+
+        protected static void Reset()
+        {
+            canvas.RemoveAll();
+            Setup();
+        }
+
+        protected static void ChangeMap()
+        {
+            if (map == Properties.Resources.level1) map = Properties.Resources.level2;
+            else if (map == Properties.Resources.level2) map = Properties.Resources.level1;
+        }
+
+        protected static void NewMap()
+        {
+            ChangeMap();
+            Reset();
+        }
+
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            map = Properties.Resources.level1;
+            Setup();
             Application.Run(new Program());
         }
     }
