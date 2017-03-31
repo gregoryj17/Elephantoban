@@ -150,6 +150,35 @@ namespace Assignment04.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to wwww  
+        ///w gw  
+        ///w  www
+        ///wBc  w
+        ///w  b w
+        ///w  www
+        ///wwww  .
+        /// </summary>
+        internal static string level4 {
+            get {
+                return ResourceManager.GetString("level4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   wwww   
+        ///www  wwww
+        ///w     b w
+        ///w w  wb w
+        ///w g gwc w
+        ///wwwwwwwww.
+        /// </summary>
+        internal static string level5 {
+            get {
+                return ResourceManager.GetString("level5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream music {
