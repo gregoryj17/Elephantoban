@@ -179,6 +179,55 @@ namespace Assignment04.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to wwwwwwwwwwww
+        ///w    www   w
+        ///w bb     wcw
+        ///w b wggg   w
+        ///w   wwwwwwww
+        ///wwwww       .
+        /// </summary>
+        internal static string level6 {
+            get {
+                return ResourceManager.GetString("level6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   wwwwww
+        ///  w ggcw
+        ///  w bb w
+        ///  ww www
+        ///   w w  
+        ///   w w  
+        ///wwww w  
+        ///w    ww 
+        ///w w   w 
+        ///w   w w 
+        ///www   w 
+        ///  wwwww .
+        /// </summary>
+        internal static string level7 {
+            get {
+                return ResourceManager.GetString("level7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to wwwww 
+        ///wg  ww
+        ///wcbb w
+        ///ww   w
+        /// ww  w
+        ///  wwgw
+        ///   www.
+        /// </summary>
+        internal static string level8 {
+            get {
+                return ResourceManager.GetString("level8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream music {

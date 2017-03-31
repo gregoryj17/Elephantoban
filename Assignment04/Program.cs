@@ -17,7 +17,7 @@ namespace Assignment04
         public static String map;
         public static Box winScreen = new Box(0, 0, 0, 0, 0);
         public static TextSprite winText = new TextSprite(0, 0, "       You Win!\n\nPress \"n\" for a new level.\nPress \"r\" to reset this level.");
-        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2, Properties.Resources.level3, Properties.Resources.level4, Properties.Resources.level5 };
+        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2, Properties.Resources.level3, Properties.Resources.level4, Properties.Resources.level5, Properties.Resources.level6, Properties.Resources.level7, Properties.Resources.level8};
         public static int level = 0;
 
 
@@ -58,10 +58,23 @@ namespace Assignment04
             {
                 jukebox.Stop();
             }
+            if (isDigit(e.KeyCode))
+            {
+                NewMap((int)((char)(e.KeyValue))-1);
+            }
+            if (e.KeyCode == Keys.B)
+            {
+                LastMap();
+            }
             elephant.TargetX = x * 100;
             elephant.TargetY = y * 100;
             setWinText();
+            //Console.Out.WriteLine(e.KeyCode);
+        }
 
+        public static Boolean isDigit(Keys ch)
+        {
+            return (ch == Keys.D0 || ch == Keys.D1 || ch == Keys.D2 || ch == Keys.D3 || ch == Keys.D4 || ch == Keys.D5 || ch == Keys.D6 || ch == Keys.D7 || ch == Keys.D8 || ch == Keys.D9) ;
         }
 
         public void moveBlock(int i, int j, int dx, int dy)
@@ -200,9 +213,35 @@ namespace Assignment04
             level = (level + 1) % levels.Length;
         }
 
+        protected static void ChangeMap(int n)
+        {
+            level = (level + n) % levels.Length;
+            while (level < 0)
+            {
+                level = (level+levels.Length)%levels.Length;
+            }
+        }
+
+        protected static void SetMap(int n)
+        {
+            level = n % levels.Length;
+        }
+
         protected static void NewMap()
         {
             ChangeMap();
+            Reset();
+        }
+        
+        protected static void LastMap()
+        {
+            ChangeMap(-1);
+            Reset();
+        }
+
+        protected static void NewMap(int n)
+        {
+            SetMap(n);
             Reset();
         }
 
