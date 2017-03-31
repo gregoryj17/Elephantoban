@@ -17,7 +17,7 @@ namespace Assignment04
         public static String map;
         public static Box winScreen = new Box(0, 0, 0, 0, 0);
         public static TextSprite winText = new TextSprite(0, 0, "       You Win!\n\nPress \"n\" for a new level.\nPress \"r\" to reset this level.");
-        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2 };
+        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2, Properties.Resources.level3 };
         public static int level = 0;
 
 
@@ -134,6 +134,7 @@ namespace Assignment04
                 winScreen.setVisibility(false);
                 winText.setVisibility(false);
             }
+            fixScale();
         }
 
         protected static void Setup()

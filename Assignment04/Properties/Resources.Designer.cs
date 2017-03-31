@@ -101,10 +101,10 @@ namespace Assignment04.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to wwwwwwww
+        ///   Looks up a localized string similar to wwwwwww 
         ///w  c  ww
-        ///w  w  ww
-        ///ww w www
+        ///w  w   w
+        ///ww w w w
         ///w b B  w
         ///wwg    w
         ///w      w
@@ -118,19 +118,34 @@ namespace Assignment04.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   wwwww
+        ///   Looks up a localized string similar to wwwww 
+        ///w c  w
+        ///w b  w
+        ///w w  w
+        ///ww   w
+        ///wg   w
+        ///wwwww .
+        /// </summary>
+        internal static string level2 {
+            get {
+                return ResourceManager.GetString("level2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   wwwww 
         ///www   w 
         ///wgcb  w 
-        ///www b gw 
+        ///www bgw  
         ///wgwwb w 
         ///w w g ww
         ///wb Bbbgw
         ///w   g  w
         ///wwwwwwww.
         /// </summary>
-        internal static string level2 {
+        internal static string level3 {
             get {
-                return ResourceManager.GetString("level2", resourceCulture);
+                return ResourceManager.GetString("level3", resourceCulture);
             }
         }
         
