@@ -15,7 +15,8 @@ namespace Assignment04
 {
     public partial class Engine : Form
     {
-        public static Sprite canvas=new Sprite();
+        public static Sprite canvas = new Sprite();
+        public static Sprite parent = new Sprite();
         public static Engine form;
         public Thread rthread;
         public Thread uthread;
@@ -87,6 +88,7 @@ namespace Assignment04
             //base.OnPaint(e);
             //e.Graphics.FillRectangle(Brushes.Black, ClientRectangle);
             canvas.render(e.Graphics);
+            parent.render(e.Graphics);
         }
 
         protected override void OnClosed(EventArgs e)

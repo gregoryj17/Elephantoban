@@ -167,4 +167,83 @@ namespace Assignment04
         }
     }
 
+    public class TextSprite : Sprite
+    {
+        public String text;
+        public Boolean visible;
+        public int x;
+        public int y;
+        public int font = 24;
+
+        public TextSprite(int x, int y, String text)
+        {
+            this.x = x;
+            this.y = y;
+            this.text = text;
+            visible = false;
+        }
+
+        public void changeLocation(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public void setVisibility(Boolean visible)
+        {
+            this.visible = visible;
+        }
+
+        public void fontResize(int width,int height)
+        {
+            font = (int)(12+(12*(Math.Min(width,height)/705)));
+        }
+
+        public override void paint(Graphics g)
+        {
+            //base.paint(g);
+            if (visible) g.DrawString(text, new Font("Comic Sans MS", font), Brushes.Black, x, y);
+        }
+    }
+
+    public class Box : Sprite
+    {
+        public int height;
+        public int width;
+        public Boolean visible;
+        public int opacity;
+
+        public Box(int x, int y, int width, int height, int opacity)
+        {
+            X = x;
+            Y = y;
+            this.height = height;
+            this.width = width;
+            this.opacity = opacity;
+            visible = false;
+        }
+
+        public void setDimensions(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
+        public void setOpacity(int opacity)
+        {
+            this.opacity = opacity;
+        }
+
+        public void setVisibility(Boolean visible)
+        {
+            this.visible = visible;
+        }
+
+        public override void paint(Graphics g)
+        {
+            base.paint(g);
+            if (visible) g.FillRectangle(new SolidBrush(Color.FromArgb(opacity, Color.LawnGreen)), X, Y, width, height);
+        }
+    }
+
 }

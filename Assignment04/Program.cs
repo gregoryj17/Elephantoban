@@ -15,6 +15,10 @@ namespace Assignment04
         public static int width;
         public static int height;
         public static String map;
+        public static Box winScreen = new Box(0, 0, 0, 0, 0);
+        public static TextSprite winText = new TextSprite(0, 0, "       You Win!\n\nPress \"n\" for a new level.\nPress \"r\" to reset this level.");
+        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2 };
+        public static int level = 0;
 
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -56,6 +60,7 @@ namespace Assignment04
             }
             elephant.TargetX = x * 100;
             elephant.TargetY = y * 100;
+            setWinText();
 
         }
 
@@ -73,7 +78,7 @@ namespace Assignment04
 
         public Boolean canMoveTo(int i, int j, int dx, int dy)
         {
-
+            if (isFinished()) return false;
             if (walls[i, j] == null && blocks[i, j] == null) return true;
             if (walls[i, j] != null) return false;
             if (blocks[i, j] != null && blocks[i + dx, j + dy] == null && walls[i + dx, j + dy] == null) return true;
@@ -112,8 +117,28 @@ namespace Assignment04
             return true;
         }
 
+        protected void setWinText()
+        {
+            if (isFinished())
+            {
+                winScreen.setDimensions(ClientSize.Width, ClientSize.Height);
+                winScreen.setOpacity(200);
+                winScreen.setVisibility(true);
+                winText.changeLocation(ClientSize.Width/2 - 200, ClientSize.Height/2 - 80);
+                if (winText.x < 50) winText.x = 50;
+                winText.fontResize(ClientSize.Width, ClientSize.Height);
+                winText.setVisibility(true);
+            }
+            else
+            {
+                winScreen.setVisibility(false);
+                winText.setVisibility(false);
+            }
+        }
+
         protected static void Setup()
         {
+            map = levels[level];
             String[] lines = map.Split('\n');
             width = lines[0].Length-1;
             height = lines.Length;
@@ -156,18 +181,22 @@ namespace Assignment04
                 for (int i = 0; i < width; i++)
                     if (blocks[i, j] != null) Program.canvas.add(blocks[i, j]);
             Program.canvas.add(elephant);
+            winScreen.setVisibility(false);
+            winText.setVisibility(false);
+            parent.add(winScreen);
+            parent.add(winText);
         }
 
         protected static void Reset()
         {
             canvas.RemoveAll();
+            parent.RemoveAll();
             Setup();
         }
 
         protected static void ChangeMap()
         {
-            if (map == Properties.Resources.level1) map = Properties.Resources.level2;
-            else if (map == Properties.Resources.level2) map = Properties.Resources.level1;
+            level = (level + 1) % levels.Length;
         }
 
         protected static void NewMap()
