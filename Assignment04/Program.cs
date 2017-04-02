@@ -17,7 +17,7 @@ namespace Assignment04
         public static String map;
         public static Box winScreen = new Box(0, 0, 0, 0, 0);
         public static TextSprite winText = new TextSprite(0, 0, "       You Win!\n\nPress \"n\" for a new level.\nPress \"r\" to reset this level.");
-        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2, Properties.Resources.level3, Properties.Resources.level4, Properties.Resources.level5, Properties.Resources.level6, Properties.Resources.level7, Properties.Resources.level8};
+        public static String[] levels = new String[] {Properties.Resources.level1, Properties.Resources.level2, Properties.Resources.level3, Properties.Resources.level4, Properties.Resources.level5, Properties.Resources.level6, Properties.Resources.level7, Properties.Resources.level8, Properties.Resources.level9, Properties.Resources.level10};
         public static int level = 0;
 
 
@@ -58,9 +58,45 @@ namespace Assignment04
             {
                 jukebox.Stop();
             }
-            if (isDigit(e.KeyCode))
+            if (e.KeyCode == Keys.D0)
             {
-                NewMap((int)((char)(e.KeyValue))-1);
+                NewMap(9);
+            }
+            if (e.KeyCode == Keys.D1)
+            {
+                NewMap(0);
+            }
+            if (e.KeyCode == Keys.D2)
+            {
+                NewMap(1);
+            }
+            if (e.KeyCode == Keys.D3)
+            {
+                NewMap(2);
+            }
+            if (e.KeyCode == Keys.D4)
+            {
+                NewMap(3);
+            }
+            if (e.KeyCode == Keys.D5)
+            {
+                NewMap(4);
+            }
+            if (e.KeyCode == Keys.D6)
+            {
+                NewMap(5);
+            }
+            if (e.KeyCode == Keys.D7)
+            {
+                NewMap(6);
+            }
+            if (e.KeyCode == Keys.D8)
+            {
+                NewMap(7);
+            }
+            if (e.KeyCode == Keys.D9)
+            {
+                NewMap(8);
             }
             if (e.KeyCode == Keys.B)
             {

@@ -100,9 +100,6 @@
     <None Include="Resources\final.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\goal.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\wall.png" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +125,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\level8.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level9.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\level10.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
